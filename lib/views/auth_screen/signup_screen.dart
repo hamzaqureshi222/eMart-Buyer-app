@@ -83,7 +83,6 @@ class _SignupScreenState extends State<SignupScreen> {
                        VxToast.show(context, msg: loggedin);
                        Get.offAll(const Home());});
                    }catch(e){
-                    auth.signOut();
                     VxToast.show(context, msg: e.toString());
                    }
                  }

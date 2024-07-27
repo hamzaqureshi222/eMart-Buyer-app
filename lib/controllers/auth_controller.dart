@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart/consts/consts.dart';
 import 'package:emart/views/auth_screen/login_screen.dart';
+import 'package:emart/views/auth_screen/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -66,12 +67,8 @@ class AuthController extends GetxController{
     store.set({'name':name, 'password':password, 'email':email, 'imageUrl':'','id':currentUser!.uid,
     'cart_count':"00",'wishlist_count':"00",'order_count':"00",});
   }
-
-  Future<void> signOutMethod() async {
-      await auth.signOut();
-      if (kDebugMode) {
-        print("User signed out successfully");
-      } // Debug statement
-      Get.offAll(() => const LoginScreen());
-}
+  signOutMethod() async {
+    await auth.signOut();
+    Get.offAll(()=>const LoginScreen());
+  }
 }

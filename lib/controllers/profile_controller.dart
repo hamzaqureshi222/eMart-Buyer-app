@@ -10,50 +10,56 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 
-class ProfileController extends GetxController{
-  var profileImgPAth=''.obs;
-  var profileImgUrl='';
+import '../views/auth_screen/login_screen.dart';
+import '../views/auth_screen/signup_screen.dart';
 
-  var nameController=TextEditingController();
-  var oldpasswordController=TextEditingController();
-  var newpasswordController=TextEditingController();
+class ProfileController extends GetxController {
+  var profileImgPAth = ''.obs;
+  var profileImgUrl = ''.obs;
 
-  changeImage(context)async{
-    try{
-      final img=await ImagePicker().pickImage(source: ImageSource.gallery);
-      if(img == null) return;
-      profileImgPAth.value=img.path;
-    }catch(e){
+  var nameController = TextEditingController();
+  var oldpasswordController = TextEditingController();
+  var newpasswordController = TextEditingController();
+
+  changeImage(context) async {
+    try {
+      final img = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (img == null) return;
+      profileImgPAth.value = img.path;
+    } catch (e) {
       VxToast.show(context, msg: e.toString());
     }
   }
 
-  uploadProfileImage()async{
-    var filename=basename(profileImgPAth.value);
-     var destination='images/${currentUser!.uid}/$filename';
-     Reference ref=FirebaseStorage.instance.ref().child(destination);
-     await ref.putFile(File(profileImgPAth.value));
-     profileImgUrl=await ref.getDownloadURL();
+  uploadProfileImage() async {
+    var filename = basename(profileImgPAth.value);
+    var destination = 'images/${currentUser!.uid}/$filename';
+    Reference ref = FirebaseStorage.instance.ref().child(destination);
+    await ref.putFile(File(profileImgPAth.value));
+    profileImgUrl.value = await ref.getDownloadURL();
   }
-  updateProfile({name,password,imgUrl})async{
-    var store=firestore.collection(usersCollection).doc(currentUser!.uid);
+
+  updateProfile({required String name, required String password, required String imgUrl}) async {
+    var store = firestore.collection(usersCollection).doc(currentUser!.uid);
     await store.set({
-      'name':name,
-      'password':password,
-      'imageUrl':imgUrl
-    },SetOptions(merge: true));
+      'name': name,
+      'password': password,
+      'imageUrl': imgUrl
+    }, SetOptions(merge: true));
   }
-  updateImage({imgUrl})async{
-    var store=firestore.collection(usersCollection).doc(currentUser!.uid);
+
+  updateImage({required String imgUrl}) async {
+    var store = firestore.collection(usersCollection).doc(currentUser!.uid);
     await store.set({
-      'imageUrl':imgUrl
-    },SetOptions(merge: true));
+      'imageUrl': imgUrl
+    }, SetOptions(merge: true));
   }
-  changeAuthpassword({email,password,newpassword})async{
-    final cred=EmailAuthProvider.credential(email: email, password: password);
-    await currentUser!.reauthenticateWithCredential(cred).then((value){
+
+  changeAuthpassword({required String email, required String password, required String newpassword}) async {
+    final cred = EmailAuthProvider.credential(email: email, password: password);
+    await currentUser!.reauthenticateWithCredential(cred).then((value) {
       currentUser!.updatePassword(newpassword);
-    }).catchError((error){
+    }).catchError((error) {
       if (kDebugMode) {
         print(error.toString());
       }

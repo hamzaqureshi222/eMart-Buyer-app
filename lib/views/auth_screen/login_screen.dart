@@ -17,9 +17,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  AuthController authControllr=Get.put(AuthController());
+
   @override
   Widget build(BuildContext context) {
-    var authControllr=Get.put(AuthController());
     return  bgWidget(child: Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
@@ -34,15 +35,16 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 CustomField(title: email,hint: emailhint,isPass: false,controller: authControllr.emailController),
                 (context.screenHeight *0.02).heightBox,
-                CustomField(title: password,hint: passwordhint,isPass: true,controller: authControllr.passwordController ),
+                CustomField(title: password,hint: passwordhint,isPass: true,controller: authControllr.passwordController),
                 Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(onPressed: (){}, child: forgetpass.text.make())),
                 LoginButton(title: login,color: redColor,onPress: ()async{
                   await authControllr.loginMethod(context: context).then((value){
                     if(value!=null){
+                      currentUser=value.user!;
                       VxToast.show(context, msg: loggedin);
-                      Get.offAll(const Home());
+                      Get.offAll(()=>Home());
                     }
                   });
                 },textColor: whiteColor)

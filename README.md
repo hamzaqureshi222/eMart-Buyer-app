@@ -1,6 +1,14 @@
 # emart_app
+eMart is a modern eCommerce application built using Flutter,
+Firebase, and various state management techniques. It offers features such as user authentication,
+profile management, product browsing, and more, making it a comprehensive solution for online shopping.
 
-A new Flutter project.
+#Features
+User Authentication: Secure login and signup using Firebase Authentication.
+Profile Management: Edit and update user profiles with image upload functionality.
+Product Browsing: Explore a wide range of products with detailed views.
+Shopping Cart: Add items to the cart and manage them efficiently.
+Order Management: Place orders and track them seamlessly.
 
 ## Getting Started
 

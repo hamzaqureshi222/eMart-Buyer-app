@@ -1,11 +1,7 @@
 import 'package:emart/widgets/exit_dialogue.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../consts/colors.dart';
-import '../../consts/images.dart';
-import '../../consts/strings.dart';
-import '../../consts/styles.dart';
+import '../../consts/consts.dart';
 import '../../controllers/home_controller.dart';
 import '../cart_screen/cart_screen.dart';
 import '../category_screen/category_screen.dart';
@@ -32,7 +28,7 @@ class _HomeState extends State<Home> {
       const HomeScreen(),
       const CategoryScreen(),
       const CartScreen(),
-       const ProfileScreen()
+       ProfileScreen()
     ];
     return  WillPopScope(
       onWillPop: ()async{
@@ -54,7 +50,7 @@ class _HomeState extends State<Home> {
           onTap: (value){
             controller.currentNavIndex.value=value;
           },
-          backgroundColor: whiteColor,),
+          backgroundColor: whiteColor),
         ) ,
       ),
     );

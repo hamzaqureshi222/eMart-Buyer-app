@@ -14,14 +14,16 @@ import 'package:emart/views/wishlist_screen/wishlist_screen.dart';
 import 'package:emart/widgets/bg_widget.dart';
 
 import '../../controllers/profile_controller.dart';
+import '../home_screen/home.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+  AuthController authController=Get.put(AuthController());
+  ProfileController profileController=Get.put(ProfileController());
+
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(ProfileController());
-    var controller2=Get.put(AuthController());
     return bgWidget(
       child: Scaffold(
         body: StreamBuilder(
@@ -47,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                           Icons.edit,
                           color: whiteColor,
                         ).onTap(() {
-                          controller.nameController.text = data['name'];
+                          Get.find<ProfileController>().nameController.text = data['name'];
                           Get.to(EditProfileScreen(data: data));
                         }),
                       ),
@@ -79,8 +81,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           OutlinedButton(
                             onPressed: () async {
-                              print("Logout button pressed"); // Debug statement
-                              await controller2.signOutMethod();
+                              await authController.signOutMethod();
                             },
                             style: OutlinedButton.styleFrom(
                               side: const BorderSide(
