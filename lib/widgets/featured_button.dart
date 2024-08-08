@@ -3,9 +3,7 @@ import 'package:emart/views/category_screen/category_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../controllers/product_controller.dart';
 Widget featuredButton({icon,String? title}){
-  var controller=Get.put(ProductsController());
   return  Row(
     children: [
       Image.asset(icon,width: 60,fit: BoxFit.fill,),

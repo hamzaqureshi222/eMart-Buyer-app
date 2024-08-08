@@ -10,9 +10,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 
-import '../views/auth_screen/login_screen.dart';
-import '../views/auth_screen/signup_screen.dart';
-
 class ProfileController extends GetxController {
   var profileImgPAth = ''.obs;
   var profileImgUrl = ''.obs;

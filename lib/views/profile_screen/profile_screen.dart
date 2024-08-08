@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart/consts/consts.dart';
 import 'package:emart/consts/lists.dart';
 import 'package:emart/controllers/auth_controller.dart';
 import 'package:emart/services/firestore_services.dart';
-import 'package:emart/views/auth_screen/login_screen.dart';
 import 'package:emart/views/chat_screen/messaging_screen.dart';
 import 'package:emart/views/orders_screen/orders_screen.dart';
 import 'package:emart/views/profile_screen/components/details_card.dart';
 import 'package:emart/views/profile_screen/edit_profile_screen.dart';
 import 'package:emart/views/wishlist_screen/wishlist_screen.dart';
 import 'package:emart/widgets/bg_widget.dart';
-
 import '../../controllers/profile_controller.dart';
-import '../home_screen/home.dart';
-
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
   AuthController authController=Get.put(AuthController());

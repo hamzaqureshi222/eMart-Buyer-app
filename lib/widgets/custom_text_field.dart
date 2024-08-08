@@ -30,7 +30,7 @@ class _CustomFieldState extends State<CustomField> {
       children: [
         Text(
           widget.title!,
-          style: TextStyle(
+          style: const TextStyle(
             color: redColor,
             fontFamily: semibold,
             fontSize: 16,

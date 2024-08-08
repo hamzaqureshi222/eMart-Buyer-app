@@ -72,7 +72,7 @@ class ChatScreen extends StatelessWidget {
                 IconButton(onPressed: (){
                   controller.sendMsg(controller.msgcontroller.text);
                   controller.msgcontroller.clear();
-                }, icon: const Icon(Icons.send,color: Colors.white,)).box.color(Colors.black45).roundedFull.margin(EdgeInsets.only(left: 5)).make()
+                }, icon: const Icon(Icons.send,color: Colors.white,)).box.color(Colors.black45).roundedFull.margin(const EdgeInsets.only(left: 5)).make()
               ],
             ).box.height(70).padding(const EdgeInsets.all(12)).margin(const EdgeInsets.only(bottom: 2)).make()
           ],

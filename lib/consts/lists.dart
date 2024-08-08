@@ -6,7 +6,7 @@ const socialIconList = [
   icGoogleLogo,
   icTwitterLogo
 ];
-const SLidersList=[
+const SlidersList=[
   imgSlider1,imgSlider2,imgSlider3,imgSlider4,
 ];
 const SecondSLidersList=[

@@ -54,9 +54,9 @@ class HomeScreen extends StatelessWidget {
                       autoPlay: true,
                       height: 150,
                       enlargeCenterPage: true,
-                      itemCount: SLidersList.length, itemBuilder: (context,index){
+                      itemCount: SlidersList.length, itemBuilder: (context,index){
                     return Container(
-                        child: Image.asset(SLidersList[index],fit: BoxFit.fill,
+                        child: Image.asset(SlidersList[index],fit: BoxFit.fill,
                         ).box.rounded.clip(Clip.antiAlias).margin(const EdgeInsets.symmetric(horizontal: 8)).make()
                     );
                   }),
